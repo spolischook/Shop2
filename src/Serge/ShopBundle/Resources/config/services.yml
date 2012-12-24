@@ -1,0 +1,11 @@
+parameters:
+#    shop.example.class: Serge\ShopBundle\Example
+
+services:
+#    shop.example:
+#        class: %shop.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    shop.twig.shop_extension:
+        class: Serge\ShopBundle\Twig\ShopExtension
+        tags:
+            - { name: twig.extension }

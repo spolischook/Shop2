@@ -1,0 +1,30 @@
+product:
+    pattern:  /
+    defaults: { _controller: "ShopBundle:Product:index" }
+
+product_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ShopBundle:Product:show" }
+
+product_new:
+    pattern:  /new
+    defaults: { _controller: "ShopBundle:Product:new" }
+
+product_create:
+    pattern:  /create
+    defaults: { _controller: "ShopBundle:Product:create" }
+    requirements: { _method: post }
+
+product_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ShopBundle:Product:edit" }
+
+product_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ShopBundle:Product:update" }
+    requirements: { _method: post }
+
+product_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ShopBundle:Product:delete" }
+    requirements: { _method: post }

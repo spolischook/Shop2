@@ -1,0 +1,11 @@
+shop_homepage:
+    pattern:  /
+    defaults: { _controller: ShopBundle:Default:index }
+
+ShopBundle_category:
+    resource: "@ShopBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+ShopBundle_product:
+    resource: "@ShopBundle/Resources/config/routing/product.yml"
+    prefix:   /product
