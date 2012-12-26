@@ -19,10 +19,12 @@ class ShopExtension extends \Twig_Extension
             $aStr = explode(' ', $string);
 
             for ($i=0; $number>$i; $i++) {
-                $str .= $aStr[$i].' ';
+                if (isset($aStr[$i]))
+                    $str .= $aStr[$i].' ';
             }
 
-            $str = rtrim($str).'...';
+            if (count($aStr) > $number)
+                $str = rtrim($str).'...';
             return $str;
         }
 
