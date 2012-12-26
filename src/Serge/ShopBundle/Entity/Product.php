@@ -32,7 +32,7 @@ class Product
     /**
      * @var
      *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="product")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="product", cascade={"persist"})
      */
     private $category;
 
