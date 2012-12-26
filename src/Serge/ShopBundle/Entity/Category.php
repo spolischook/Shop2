@@ -40,7 +40,7 @@ class Category
     /**
      * @var
      *
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="category")
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="category", cascade={"persist"})
      * @ORM\JoinTable(name="category_product")
      */
     private $product;

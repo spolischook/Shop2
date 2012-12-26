@@ -3,7 +3,16 @@
 <h1>Product creation</h1>
 
 <form action="{{ path('product_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    <h3>Categories</h3>
+    <ul class="categories" data-prototype="{{ form_widget(form.category.vars.prototype)|e }}">
+        {% for category in form.category %}
+            <li>{{ form_row(category.name) }}</li>
+        {% endfor %}
+    </ul>
+    {{ form_rest(form) }}
     <p>
         <button type="submit">Create</button>
     </p>
@@ -16,4 +25,36 @@
         </a>
     </li>
 </ul>
+<script>
+    var collectionHolder = $('ul.categories');
+
+    var $addCategoryLink = $('<a href="#" class="add_category_link">Add a category</a>');
+    var $newLinkLi = $('<li></li>').append($addCategoryLink);
+
+    jQuery(document).ready(function() {
+        // add the "add a tag" anchor and li to the tags ul
+        collectionHolder.append($newLinkLi);
+
+        $addCategoryLink.on('click', function(e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // add a new tag form (see next code block)
+            addCategoryForm(collectionHolder, $newLinkLi);
+        });
+    });
+
+    function addCategoryForm(collectionHolder, $newLinkLi) {
+        // Get the data-prototype explained earlier
+        var prototype = collectionHolder.attr('data-prototype');
+
+        // Replace '__name__' in the prototype's HTML to
+        // instead be a number based on the current collection's length.
+        var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+
+        // Display the form in the page in an li, before the "Add a tag" link li
+        var $newFormLi = $('<li></li>').append(newForm);
+        $newLinkLi.before($newFormLi);
+    }
+</script>
 {% endblock main %}
