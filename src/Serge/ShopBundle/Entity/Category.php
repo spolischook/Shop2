@@ -40,14 +40,14 @@ class Category
     /**
      * @var
      *
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="category", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="categories", cascade={"persist"})
      * @ORM\JoinTable(name="category_product")
      */
-    private $product;
+    private $products;
 
     public function __construct()
     {
-        $this->product = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     /**
@@ -84,6 +84,14 @@ class Category
     }
 
     /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
@@ -97,22 +105,18 @@ class Category
     }
 
     /**
-     * Get description
-     *
-     * @return string 
+     * @return
      */
-    public function getDescription()
+    public function getProducts()
     {
-        return $this->description;
+        return $this->products;
     }
 
-    public function getProduct()
+    /**
+     * @param  $products
+     */
+    public function setProducts($products)
     {
-        return $this->product;
-    }
-
-    public function setProduct(ArrayCollection $product)
-    {
-        $this->product = $product;
+        $this->products = $products;
     }
 }

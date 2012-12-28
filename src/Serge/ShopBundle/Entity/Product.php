@@ -32,9 +32,9 @@ class Product
     /**
      * @var
      *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="product", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="products", cascade={"persist"})
      */
-    private $category;
+    private $categories;
 
     /**
      * @var string
@@ -45,7 +45,7 @@ class Product
 
     public function __construct()
     {
-        $this->category = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -107,16 +107,16 @@ class Product
     /**
      * @return
      */
-    public function getCategory()
+    public function getCategories()
     {
-        return $this->category;
+        return $this->categories;
     }
 
     /**
-     * @param  $category
+     * @param  $categories
      */
-    public function setCategory(ArrayCollection $category)
+    public function setCategories($categories)
     {
-        $this->category = $category;
+        $this->categories = $categories;
     }
 }
