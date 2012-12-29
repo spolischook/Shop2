@@ -40,7 +40,7 @@ class Category
     /**
      * @var
      *
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="categories", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="categories")
      * @ORM\JoinTable(name="category_product")
      */
     private $products;
@@ -110,6 +110,22 @@ class Category
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function addProduct(Product $product)
+    {
+        $this->products->add($product);
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct(Product $product)
+    {
+        $this->products->removeElement($product);
     }
 
     /**

@@ -113,6 +113,24 @@ class Product
     }
 
     /**
+     * @param Category $category
+     */
+    public function addCategory(Category $category)
+    {
+        $this->categories->add($category);
+        $category->addProduct($this);
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function removeCategory(Category $category)
+    {
+        $this->categories->removeElement($category);
+        $category->removeProduct($this);
+    }
+
+    /**
      * @param  $categories
      */
     public function setCategories($categories)

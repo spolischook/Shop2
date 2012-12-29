@@ -71,20 +71,21 @@ class ProductController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity  = new Product();
-        $form = $this->createForm(new ProductType(), $entity);
+        $product  = new Product();
+        $form = $this->createForm(new ProductType(), $product);
         $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($product);
+
             $em->flush();
 
-            return $this->redirect($this->generateUrl('product_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('product_show', array('id' => $product->getId())));
         }
 
         return $this->render('ShopBundle:Product:new.html.twig', array(
-            'entity' => $entity,
+            'entity' => $product,
             'form'   => $form->createView(),
         ));
     }
