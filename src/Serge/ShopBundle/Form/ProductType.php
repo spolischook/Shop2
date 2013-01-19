@@ -11,11 +11,8 @@ class ProductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $aCat = array();
-        foreach ($options['data']->getCategories() as $cat) {
-            $aCat[] = $cat;
-        }
-        $categoryCollection = new ArrayCollection($aCat);
+        $aCategory = $options['data']->getCategories()->toArray();
+        $categoryCollection = new ArrayCollection($aCategory);
         $builder
             ->add('name')
             ->add('description')
