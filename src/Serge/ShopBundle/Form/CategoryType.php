@@ -13,6 +13,12 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('parent', 'entity', array(
+                'class' => 'ShopBundle:Category',
+                'property' => 'name',
+                'empty_value' => 'Root category',
+                'required' => false,
+            ))
         ;
     }
 

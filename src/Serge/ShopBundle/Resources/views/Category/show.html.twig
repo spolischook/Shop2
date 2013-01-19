@@ -16,6 +16,16 @@
             <th>Description</th>
             <td>{{ entity.description|dotdotdot(30) }}</td>
         </tr>
+        <tr>
+            <th>Parent</th>
+            <td>
+                {% if entity.parent != NULL %}
+                    {{ entity.parent }}
+                {% else %}
+                    ROOT
+                {% endif %}
+            </td>
+        </tr>
     </tbody>
 </table>
 

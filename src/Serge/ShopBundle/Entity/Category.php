@@ -45,9 +45,61 @@ class Category
      */
     private $products;
 
+    /**
+     * @var
+     *
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     */
+    private $children;
+
+    /**
+     * @var
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     */
+    private $parent;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->children = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param  $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @return
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param  $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 
     /**
