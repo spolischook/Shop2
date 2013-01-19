@@ -1,5 +1,7 @@
 parameters:
 #    shop.example.class: Serge\ShopBundle\Example
+    shop.category.repository.class: Serge\ShopBundle\Entity\CategoryRepository
+    shop.category.entity.class: Serge\ShopBundle\Entity\Category
 
 services:
 #    shop.example:
@@ -9,3 +11,10 @@ services:
         class: Serge\ShopBundle\Twig\ShopExtension
         tags:
             - { name: twig.extension }
+
+    shop.category.repository:
+        class: %shop.category.repository.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        arguments:
+            - %shop.category.entity.class%
