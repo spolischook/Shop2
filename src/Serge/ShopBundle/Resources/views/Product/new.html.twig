@@ -12,14 +12,14 @@
     </ul>
     {{ form_rest(form) }}
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-success" type="submit"><i class="icon-plus"></i> Create</button>
     </p>
 </form>
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('product') }}">
-            Back to the list
+        <a class="btn btn-small btn-primary" href="{{ path('product') }}">
+            <i class="icon-chevron-left"></i> Back to the list
         </a>
     </li>
 </ul>

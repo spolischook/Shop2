@@ -1,5 +1,10 @@
 {% extends 'ShopBundle::layout.html.twig' %}
 {% block main %}
+{% if app.session.hasFlash('notice') %}
+    <div id="flashmessage" class="flash-notice alert alert-success">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
 <h1>Product edit</h1>
 
 <form action="{{ path('product_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
@@ -11,20 +16,24 @@
         {{ form_row(edit_form.existCategories) }}
     {{ form_widget(edit_form._token) }}
     <p>
-        <button type="submit">Edit</button>
+        <button class="btn btn-success" type="submit">
+            <i class="icon-ok"></i> Submit edit
+        </button>
     </p>
 </form>
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('product') }}">
-            Back to the list
+        <a class="btn btn-small btn-primary"  href="{{ path('product') }}">
+            <i class="icon-chevron-left"></i> Back to the list
         </a>
     </li>
     <li>
         <form action="{{ path('product_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-small" type="submit">
+                <i class="icon-trash"></i> Delete
+            </button>
         </form>
     </li>
 </ul>

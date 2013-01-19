@@ -135,6 +135,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
 
+            $this->get('session')->setFlash('notice', 'Your changes were saved!');
             return $this->redirect($this->generateUrl('product_edit', array('id' => $id)));
         }
 

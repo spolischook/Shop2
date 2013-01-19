@@ -1,6 +1,6 @@
 {% extends 'ShopBundle::layout.html.twig' %}
 {% block main %}
-<h1>Product</h1>
+<h1>{{ entity.name }}</h1>
 
 <table class="record_properties">
     <tbody>
@@ -16,24 +16,36 @@
             <th>Description</th>
             <td>{{ entity.description }}</td>
         </tr>
+        <tr>
+            <th>Categories</th>
+            <td>
+                {% for category in entity.categories %}
+                        <a class="btn btn-mini btn-info" href="{{ path('category_show', {'id': category.id}) }}">
+                            <i class="icon-tag"></i> {{ category.name }}
+                        </a>
+                {% endfor %}
+            </td>
+        </tr>
     </tbody>
 </table>
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('product') }}">
-            Back to the list
+        <a class="btn btn-small btn-primary" href="{{ path('product') }}">
+            <i class="icon-chevron-left"></i> Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('product_edit', { 'id': entity.id }) }}">
-            Edit
+        <a class="btn btn-small btn-warning" href="{{ path('product_edit', { 'id': entity.id }) }}">
+            <i class="icon-pencil"></i> Edit
         </a>
     </li>
     <li>
         <form action="{{ path('product_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-small" type="submit">
+                <i class="icon-trash"></i> Delete
+            </button>
         </form>
     </li>
 </ul>

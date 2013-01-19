@@ -3,3 +3,11 @@
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
     background-color: #08C;
 }
+
+.record_actions {
+    list-style: none;
+}
+.record_actions li {
+    float: left;
+    margin-left: 3px;
+}

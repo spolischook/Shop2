@@ -2,12 +2,13 @@
 {% block main %}
 <h1>Product list</h1>
 
-<table class="records_list">
+<table class="records_list table">
     <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Categories</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,14 +19,19 @@
             <td>{{ entity.name }}</td>
             <td>{{ entity.description }}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('product_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('product_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    {% for category in entity.categories %}
+                            <a class="btn btn-mini btn-info" href="{{ path('category_show', {'id': category.id}) }}">
+                                <i class="icon-tag"></i> {{ category.name }}
+                            </a>
+                    {% endfor %}
+            </td>
+            <td>
+                <a class="btn btn-small" href="{{ path('product_show', { 'id': entity.id }) }}">
+                    <i class="icon-search"></i> show
+                </a>
+                <a class="btn btn-small" href="{{ path('product_edit', { 'id': entity.id }) }}">
+                    <i class="icon-pencil"></i> edit
+                </a>
             </td>
         </tr>
     {% endfor %}
@@ -33,9 +39,9 @@
 </table>
 
 <ul>
-    <li>
-        <a href="{{ path('product_new') }}">
-            Create a new entry
+    <li style="list-style: none">
+        <a class="btn btn-success" href="{{ path('product_new') }}">
+            <i class="icon-plus"></i> Create a new product
         </a>
     </li>
 </ul>
