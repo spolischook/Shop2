@@ -3,7 +3,13 @@
 <h1>Product edit</h1>
 
 <form action="{{ path('product_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
+    {#{{ form_widget(edit_form) }}#}
+    {{ form_errors(edit_form) }}
+    {{ form_row(edit_form.name) }}
+    {{ form_row(edit_form.description) }}
+    <h3>Categories</h3>
+        {{ form_row(edit_form.existCategories) }}
+    {{ form_widget(edit_form._token) }}
     <p>
         <button type="submit">Edit</button>
     </p>
