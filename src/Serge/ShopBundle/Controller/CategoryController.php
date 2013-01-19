@@ -135,6 +135,7 @@ class CategoryController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->setFlash('notice', 'Your changes were saved!');
             return $this->redirect($this->generateUrl('category_edit', array('id' => $id)));
         }
 

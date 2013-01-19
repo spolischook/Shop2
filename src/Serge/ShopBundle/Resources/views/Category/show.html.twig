@@ -1,6 +1,6 @@
 {% extends 'ShopBundle::layout.html.twig' %}
 {% block main %}
-<h1>Category</h1>
+<h1>{{ entity.name }}</h1>
 
 <table class="record_properties">
     <tbody>
@@ -21,19 +21,21 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('category') }}">
-            Back to the list
+        <a class="btn btn-small btn-primary" href="{{ path('category') }}">
+            <i class="icon-chevron-left"></i> Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('category_edit', { 'id': entity.id }) }}">
-            Edit
+        <a class="btn btn-small btn-warning" href="{{ path('category_edit', { 'id': entity.id }) }}">
+            <i class="icon-pencil"></i> Edit
         </a>
     </li>
     <li>
         <form action="{{ path('category_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-small" type="submit">
+                <i class="icon-trash"></i> Delete
+            </button>
         </form>
     </li>
 </ul>

@@ -2,7 +2,7 @@
 {% block main %}
 <h1>Category list</h1>
 
-<table class="records_list">
+<table class="records_list table">
     <thead>
         <tr>
             <th>Id</th>
@@ -18,14 +18,12 @@
             <td>{{ entity.name }}</td>
             <td>{{ entity.description|dotdotdot(3) }}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('category_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('category_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <a class="btn btn-small"  href="{{ path('category_show', { 'id': entity.id }) }}">
+                    <i class="icon-search"></i> show
+                </a>
+                <a class="btn btn-small"  href="{{ path('category_edit', { 'id': entity.id }) }}">
+                    <i class="icon-pencil"></i> edit
+                </a>
             </td>
         </tr>
     {% endfor %}
@@ -33,9 +31,9 @@
 </table>
 
 <ul>
-    <li>
-        <a href="{{ path('category_new') }}">
-            Create a new entry
+    <li style="list-style: none">
+        <a class="btn btn-success" href="{{ path('category_new') }}">
+            <i class="icon-plus"></i> Create a new entry
         </a>
     </li>
 </ul>
