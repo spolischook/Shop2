@@ -4,6 +4,7 @@ namespace Serge\ShopBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Serge\ShopBundle\Entity\CategoryRepository;
 
 /**
  * Product
@@ -35,6 +36,8 @@ class Product
      * @ORM\ManyToMany(targetEntity="Category", mappedBy="products", cascade={"persist"})
      */
     private $categories;
+
+    private $existCategories;
 
     /**
      * @var string
@@ -136,5 +139,19 @@ class Product
     public function setCategories($categories)
     {
         $this->categories = $categories;
+    }
+
+
+    public function setExistCategories($existCategories)
+    {
+        foreach ($existCategories as $category) {
+            $category->getProducts()->add($this);
+            $this->categories->add($category);
+        }
+    }
+
+    public function getExistCategories()
+    {
+        return $this->existCategories;
     }
 }
