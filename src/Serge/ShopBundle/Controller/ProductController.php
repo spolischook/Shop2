@@ -37,16 +37,16 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ShopBundle:Product')->find($id);
+        $product = $em->getRepository('ShopBundle:Product')->find($id);
 
-        if (!$entity) {
+        if (!$product) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('ShopBundle:Product:show.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $product,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
@@ -56,11 +56,11 @@ class ProductController extends Controller
      */
     public function newAction()
     {
-        $entity = new Product();
-        $form   = $this->createForm(new ProductType(), $entity);
+        $product = new Product();
+        $form = $this->createForm(new ProductType(), $product);
 
         return $this->render('ShopBundle:Product:new.html.twig', array(
-            'entity' => $entity,
+            'entity' => $product,
             'form'   => $form->createView(),
         ));
     }
@@ -74,7 +74,6 @@ class ProductController extends Controller
         $product  = new Product();
         $form = $this->createForm(new ProductType(), $product);
         $form->bind($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
@@ -98,17 +97,17 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ShopBundle:Product')->find($id);
+        $product = $em->getRepository('ShopBundle:Product')->find($id);
 
-        if (!$entity) {
+        if (!$product) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        $editForm = $this->createForm(new ProductType(), $entity);
+        $editForm = $this->createForm(new ProductType(), $product);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('ShopBundle:Product:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $product,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -122,25 +121,25 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ShopBundle:Product')->find($id);
+        $product = $em->getRepository('ShopBundle:Product')->find($id);
 
-        if (!$entity) {
+        if (!$product) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new ProductType(), $entity);
+        $editForm = $this->createForm(new ProductType(), $product);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
+            $em->persist($product);
             $em->flush();
 
             return $this->redirect($this->generateUrl('product_edit', array('id' => $id)));
         }
 
         return $this->render('ShopBundle:Product:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $product,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -157,13 +156,13 @@ class ProductController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ShopBundle:Product')->find($id);
+            $product = $em->getRepository('ShopBundle:Product')->find($id);
 
-            if (!$entity) {
+            if (!$product) {
                 throw $this->createNotFoundException('Unable to find Product entity.');
             }
 
-            $em->remove($entity);
+            $em->remove($product);
             $em->flush();
         }
 
