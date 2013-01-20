@@ -1,5 +1,5 @@
 {
-    "hash": "9cf24c764dccf58d1b764fbbfbe861dc",
+    "hash": "2046b8397063a8f27a53dbd189507892",
     "packages": [
         {
             "name": "doctrine/common",
@@ -775,6 +775,59 @@
             ]
         },
         {
+            "name": "knplabs/knp-components",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components",
+                "reference": "1.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/KnpLabs/knp-components/archive/1.1.2.zip",
+                "reference": "1.1.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "2012-11-16 09:22:14",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Component": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "pager",
+                "components",
+                "knp",
+                "knplabs",
+                "paginator"
+            ]
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "dev-master",
             "source": {
@@ -890,6 +943,65 @@
             "description": "This bundle provides an integration of the KnpMenu library",
             "keywords": [
                 "menu"
+            ]
+        },
+        {
+            "name": "knplabs/knp-paginator-bundle",
+            "version": "dev-master",
+            "target-dir": "Knp/Bundle/PaginatorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle",
+                "reference": "v2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle/archive/v2.3.zip",
+                "reference": "v2.3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": ">=2.0,<3.0",
+                "knplabs/knp-components": ">=1.1,<2.0",
+                "twig/twig": ">=1.5,<2.0"
+            },
+            "time": "2013-01-18 17:41:27",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\PaginatorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony2 Community",
+                    "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+                }
+            ],
+            "description": "Paginator bundle for Symfony2 to automate pagination and simplify sorting and other features",
+            "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+            "keywords": [
+                "Symfony2",
+                "pager",
+                "knp",
+                "knplabs",
+                "paginator",
+                "pagination",
+                "bundle"
             ]
         },
         {
@@ -1736,6 +1848,7 @@
         "doctrine/doctrine-fixtures-bundle": 20,
         "misd/guzzle-bundle": 20,
         "pagerfanta/pagerfanta": 20,
-        "white-october/pagerfanta-bundle": 20
+        "white-october/pagerfanta-bundle": 20,
+        "knplabs/knp-paginator-bundle": 20
     }
 }
