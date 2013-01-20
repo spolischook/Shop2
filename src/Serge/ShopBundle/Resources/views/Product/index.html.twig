@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for entity in entities %}
+    {% for entity in pagination %}
         <tr>
             <td><a href="{{ path('product_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.name }}</td>
@@ -46,7 +46,9 @@
     </li>
 </ul>
 
-<div class="pagerfanta">
-    {{ pagerfanta(my_pager, 'twitter_bootstrap') }}
+
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
 </div>
 {% endblock main %}

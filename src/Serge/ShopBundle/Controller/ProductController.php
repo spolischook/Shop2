@@ -22,25 +22,18 @@ class ProductController extends Controller
     public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT p FROM ShopBundle:Product p";
+        $query = $em->createQuery($dql);
 
-//        $qb = $em->getRepository('ShopBundle:Product')->createQueryBuilder('p');
-//        $qb->limit($this->container->getParameter('products.per.page'));
-//        $qb->skip($this->container->getParameter('products.per.page')*($page-1));
-//        $query = $qb->setQuery();
-        $products = $em->getRepository('ShopBundle:Product')->findAll();
-
-        $adapter = new ArrayAdapter($products);
-        $pagerfanta = new Pagerfanta($adapter);
-//        $pagerfanta->setMaxPerPage($this->container->getParameter('products.per.page'));
-        try {
-            $pagerfanta->setCurrentPage($page);
-        } catch (NotValidCurrentPageException $e) {
-            throw new NotFoundHttpException('Illegal page');
-        }
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            10
+        );
 
         return $this->render('ShopBundle:Product:index.html.twig', array(
-            'entities' => $pagerfanta->getCurrentPageResults(),
-            'my_pager' => $pagerfanta
+            'pagination' => $pagination,
         ));
     }
 
