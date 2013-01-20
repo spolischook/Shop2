@@ -33,9 +33,16 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="supplier_code", type="integer")
+     */
+    private $supplierCode;
 
     /**
      * @var
@@ -186,5 +193,21 @@ class Category
     public function setProducts($products)
     {
         $this->products = $products;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSupplierCode()
+    {
+        return $this->supplierCode;
+    }
+
+    /**
+     * @param string $supplierCode
+     */
+    public function setSupplierCode($supplierCode)
+    {
+        $this->supplierCode = $supplierCode;
     }
 }
