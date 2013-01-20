@@ -3,6 +3,11 @@ parameters:
     shop.category.repository.class: Serge\ShopBundle\Entity\CategoryRepository
     shop.category.entity.class: Serge\ShopBundle\Entity\Category
 
+    shop.product.repository.class: Serge\ShopBundle\Entity\ProductRepository
+    shop.product.entity.class: Serge\ShopBundle\Entity\Product
+
+    products.per.page: 10
+
 services:
 #    shop.example:
 #        class: %shop.example.class%
@@ -18,3 +23,10 @@ services:
         factory_method:  getRepository
         arguments:
             - %shop.category.entity.class%
+
+    shop.product.repository:
+            class: %shop.product.repository.class%
+            factory_service: doctrine.orm.entity_manager
+            factory_method:  getRepository
+            arguments:
+                - %shop.product.entity.class%
