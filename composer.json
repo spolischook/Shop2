@@ -25,7 +25,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "misd/guzzle-bundle": "dev-master",
         "pagerfanta/pagerfanta": "dev-master",
-        "white-october/pagerfanta-bundle": "dev-master"
+        "white-october/pagerfanta-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

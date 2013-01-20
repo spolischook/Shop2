@@ -1,6 +1,6 @@
 category:
-    pattern:  /
-    defaults: { _controller: "ShopBundle:Category:index" }
+    pattern:  /{page}
+    defaults: { _controller: "ShopBundle:Category:index", page: 1}
 
 category_show:
     pattern:  /{id}/show
