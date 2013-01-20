@@ -4,7 +4,8 @@ namespace Serge\ShopBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\ArrayAdapter;
 use Serge\ShopBundle\Entity\Product;
 use Serge\ShopBundle\Form\ProductType;
 
@@ -18,14 +19,28 @@ class ProductController extends Controller
      * Lists all Product entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ShopBundle:Product')->findAll();
+//        $qb = $em->getRepository('ShopBundle:Product')->createQueryBuilder('p');
+//        $qb->limit($this->container->getParameter('products.per.page'));
+//        $qb->skip($this->container->getParameter('products.per.page')*($page-1));
+//        $query = $qb->setQuery();
+        $products = $em->getRepository('ShopBundle:Product')->findAll();
+
+        $adapter = new ArrayAdapter($products);
+        $pagerfanta = new Pagerfanta($adapter);
+//        $pagerfanta->setMaxPerPage($this->container->getParameter('products.per.page'));
+        try {
+            $pagerfanta->setCurrentPage($page);
+        } catch (NotValidCurrentPageException $e) {
+            throw new NotFoundHttpException('Illegal page');
+        }
 
         return $this->render('ShopBundle:Product:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $pagerfanta->getCurrentPageResults(),
+            'my_pager' => $pagerfanta
         ));
     }
 

@@ -1,6 +1,8 @@
 product:
-    pattern:  /
-    defaults: { _controller: "ShopBundle:Product:index" }
+    pattern:  /{page}
+    defaults: { _controller: "ShopBundle:Product:index", page: 1 }
+    requirements:
+        page:  \d+
 
 product_show:
     pattern:  /{id}/show
