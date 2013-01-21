@@ -38,13 +38,6 @@ class Category
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="supplier_code", type="integer")
-     */
-    private $supplierCode;
-
-    /**
      * @var
      *
      * @ORM\ManyToMany(targetEntity="Product", inversedBy="categories")
