@@ -28,8 +28,11 @@ class ProductController extends Controller
         $adapter = new DoctrineORMAdapter($query);
         $pagerfanta = new Pagerfanta($adapter);
 
+        $pagerfanta->setCurrentPage($page);
+
         return $this->render('ShopBundle:Product:index.html.twig', array(
-            'pagination' => $pagerfanta,
+            'entities' => $pagerfanta->getCurrentPageResults(),
+            'my_pager' => $pagerfanta,
         ));
     }
 
