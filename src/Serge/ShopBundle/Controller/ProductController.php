@@ -5,7 +5,7 @@ namespace Serge\ShopBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Serge\ShopBundle\Entity\Product;
 use Serge\ShopBundle\Form\ProductType;
 
@@ -25,15 +25,11 @@ class ProductController extends Controller
         $dql = "SELECT p FROM ShopBundle:Product p";
         $query = $em->createQuery($dql);
 
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            10
-        );
+        $adapter = new DoctrineORMAdapter($query);
+        $pagerfanta = new Pagerfanta($adapter);
 
         return $this->render('ShopBundle:Product:index.html.twig', array(
-            'pagination' => $pagination,
+            'pagination' => $pagerfanta,
         ));
     }
 
