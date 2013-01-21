@@ -21,18 +21,19 @@ class CategoryController extends Controller
     public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT p FROM ShopBundle:Product p";
+        $query = $em->createQuery($dql);
 
         $entities = $em->getRepository('ShopBundle:Category')->findAll();
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $entities,
+            $query,
             $page,
             10
         );
 
         return $this->render('ShopBundle:Category:index.html.twig', array(
-            'entities' => $entities,
             'pagination' => $pagination,
         ));
     }
