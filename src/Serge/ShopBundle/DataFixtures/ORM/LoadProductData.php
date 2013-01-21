@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Serge\ShopBundle\Entity\Product;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -13,10 +14,12 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
     {
         $product = new Product();
         $product->setName('Apple iPad 2');
-        $product->getDescription('16GB, WiFi, Black, Apple iOS 4, Apple A5 1 GHz, 9.7" IPS TFT,
+        $product->setDescription('16GB, WiFi, Black, Apple iOS 4, Apple A5 1 GHz, 9.7" IPS TFT,
             LED backlight and Multi-Touch, 802.11 a/b/g/n, Bluetooth 2.1 EDR ,
             21.2 oz, Camera: Front: 0.7 MP, Back: 0.7 MP');
-        $product->setCategories($this->getReference('tablet'));
+        $product->setCategories(array($this->getReference('tablet')));
+        $this->getReference('tablet')->getProducts()->add($product);
+        $manager->persist($this->getReference('tablet'));
         $manager->persist($product);
 
         $product = new Product();
@@ -26,7 +29,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             8GB Internal Memory; microSD expansion up to 32GB
             Wireless N Wi-Fi (802.11b/g/n); Bluetooth 3.0
             1GHz Dual-Core Processor; 1GB RAM');
-        $product->setCategories($this->getReference('tablet'));
+        $product->setCategories(array($this->getReference('tablet')));
+        $this->getReference('tablet')->getProducts()->add($product);
+        $manager->persist($this->getReference('tablet'));
         $manager->persist($product);
 
         $product = new Product();
@@ -36,7 +41,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             Integrated support for Facebook and Twitter, plus personal and Exchange email, calendar, and contacts
             Massive selection - over 23 million movies, TV shows, songs, magazines, books, audiobooks, and popular apps and games such as Netflix, Pandora, Pinterest, and Angry Birds Space
             Front-facing HD camera for taking photos or making video calls using Skype or other apps');
-        $product->setCategories($this->getReference('tablet'));
+        $product->setCategories(array($this->getReference('tablet')));
+        $this->getReference('tablet')->getProducts()->add($product);
+        $manager->persist($this->getReference('tablet'));
         $manager->persist($product);
 
         $product = new Product();
@@ -50,7 +57,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             E-Reader With Access To Thousands Of Books
             Micro SDHC Memory Card Slot
             Rechargeable Li-Poly Battery');
-        $product->setCategories($this->getReference('tablet'));
+        $product->setCategories(array($this->getReference('tablet')));
+        $this->getReference('tablet')->getProducts()->add($product);
+        $manager->persist($this->getReference('tablet'));
         $manager->persist($product);
 
         $product = new Product();
@@ -60,7 +69,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             Storage: Internal Memory: 1 GB, Card Reader: 2 in 1, Expandable Memory: SD/SDHC, MMC/MMC+ upto 32 GB
             Connections: WiFi: 802.11 b/g/n, USB Port: 1 mini-USB 2.0, Headphone jack: 1 stereo mini headphone jack
             Power: Built-in rechargeable Li-ion Battery (AC adaptor included)');
-        $product->setCategories($this->getReference('tablet'));
+        $product->setCategories(array($this->getReference('tablet')));
+        $this->getReference('tablet')->getProducts()->add($product);
+        $manager->persist($this->getReference('tablet'));
         $manager->persist($product);
 
         $product = new Product();
@@ -70,7 +81,10 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             7 inch multi-touch capacitive LCD screen, 1024 x 600-pixel resolution
             Wireless-N Wi-Fi (802.11a/b/g/n), 3 MP forward facing, 5 MP rear
             0.9 pounds (15 ounces)');
-        $product->setCategories($this->getReference('tablet'));
+        $product->setCategories(array($this->getReference('tablet')));
+        $this->getReference('tablet')->getProducts()->add($product);
+        $manager->persist($this->getReference('tablet'));
+        $manager->persist($product);
 
         $product = new Product();
         $product->setName('Apple MacBook Air MD231LL/A');
@@ -79,7 +93,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             128 GB Solid State Drive; 4 GB DDR3 RAM
             Intel HD Graphics 4000; 13.3-inch LED Display
             Ships in Certified Frustration-Free Packaging');
-        $product->setCategories($this->getReference('laptop'));
+        $product->setCategories(array($this->getReference('laptop')));
+        $this->getReference('laptop')->getProducts()->add($product);
+        $manager->persist($this->getReference('laptop'));
         $manager->persist($product);
 
         $product = new Product();
@@ -89,7 +105,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             13.3 inch LED-backlit display, 1280-by-800 resolution
             Intel HD Graphics 4000
             Ships in Certified Frustration-Free Packaging');
-        $product->setCategories($this->getReference('laptop'));
+        $product->setCategories(array($this->getReference('laptop')));
+        $this->getReference('laptop')->getProducts()->add($product);
+        $manager->persist($this->getReference('laptop'));
         $manager->persist($product);
 
         $product = new Product();
@@ -99,7 +117,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             256 GB Solid-State Drive
             15.6-Inch Screen, Nvidia GT 650M 2G
             Windows 8');
-        $product->setCategories($this->getReference('laptop'));
+        $product->setCategories(array($this->getReference('laptop')));
+        $this->getReference('laptop')->getProducts()->add($product);
+        $manager->persist($this->getReference('laptop'));
         $manager->persist($product);
 
         $product = new Product();
@@ -109,7 +129,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             500 GB 5400 rpm Hard Drive + 32 GB Solid-State Drive
             15-Inch Screen
             Windows 8');
-        $product->setCategories($this->getReference('laptop'));
+        $product->setCategories(array($this->getReference('laptop')));
+        $this->getReference('laptop')->getProducts()->add($product);
+        $manager->persist($this->getReference('laptop'));
         $manager->persist($product);
 
         $product = new Product();
@@ -119,7 +141,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             750 GB 5400 rpm Hard Drive
             15.6-Inch Screen, Intel HD Graphics 4000
             Windows 8, 5-hour battery life');
-        $product->setCategories($this->getReference('laptop'));
+        $product->setCategories(array($this->getReference('laptop')));
+        $this->getReference('laptop')->getProducts()->add($product);
+        $manager->persist($this->getReference('laptop'));
         $manager->persist($product);
 
         $product = new Product();
@@ -129,7 +153,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             6 GB DDR3 RAM; 500 GB HDD
             15.6-Inch Screen
             Windows 8');
-        $product->setCategories($this->getReference('laptop'));
+        $product->setCategories(array($this->getReference('laptop')));
+        $this->getReference('laptop')->getProducts()->add($product);
+        $manager->persist($this->getReference('laptop'));
         $manager->persist($product);
 
         $product = new Product();
@@ -139,7 +165,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             Improved EOS HD Video mode with manual exposure control; Vari-angle 3.0-inch Clear View LCD monitor
             5.3 fps continuous shooting; enhanced iFCL 63-zone, Dual-layer metering system
             Compatibility with SD/SDHC/SDXC memory cards (not included)');
-        $product->setCategories($this->getReference('Digital SLRs'));
+        $product->setCategories(array($this->getReference('Digital SLRs')));
+        $this->getReference('Digital SLRs')->getProducts()->add($product);
+        $manager->persist($this->getReference('Digital SLRs'));
         $manager->persist($product);
 
         $product = new Product();
@@ -149,7 +177,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             DIGIC 4 Image Processor; high-performance 3.9 fps continuous shooting; Live View Function for stills
             Full HD video capture at 1920x1080 resolution for up to 4GB per clip ; HDMI output
             Updated EOS Integrated Cleaning System specifically designed to work with a full-frame sensor');
-        $product->setCategories($this->getReference('Digital SLRs'));
+        $product->setCategories(array($this->getReference('Digital SLRs')));
+        $this->getReference('Digital SLRs')->getProducts()->add($product);
+        $manager->persist($this->getReference('Digital SLRs'));
         $manager->persist($product);
 
         $product = new Product();
@@ -159,7 +189,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             EXPEED 3
             5 fps continuous shooting
             16 scene modes');
-        $product->setCategories($this->getReference('Digital SLRs'));
+        $product->setCategories(array($this->getReference('Digital SLRs')));
+        $this->getReference('Digital SLRs')->getProducts()->add($product);
+        $manager->persist($this->getReference('Digital SLRs'));
         $manager->persist($product);
 
         $product = new Product();
@@ -169,14 +201,18 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             View simultaneous Live View output on external monitors and record uncompressed video via HDMI terminal
             Multi-Area Full HD D-Movie Video Recording Mode
             Comprehensive high fidelity audio recording and playback control');
-        $product->setCategories($this->getReference('Digital SLRs'));
+        $product->setCategories(array($this->getReference('Digital SLRs')));
+        $this->getReference('Digital SLRs')->getProducts()->add($product);
+        $manager->persist($this->getReference('Digital SLRs'));
         $manager->persist($product);
 
         $product = new Product();
         $product->setName('Apple iPhone 5 16GB (White)');
         $product->setDescription('Product Dimensions: 2.5 x 0.5 x 4.5 inches ; 8 ounces
             Shipping Weight: 1.1 pounds');
-        $product->setCategories($this->getReference('phone'));
+        $product->setCategories(array($this->getReference('phone')));
+        $this->getReference('phone')->getProducts()->add($product);
+        $manager->persist($this->getReference('phone'));
         $manager->persist($product);
 
         $product = new Product();
@@ -186,7 +222,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             GSM, 3G HSDPA, Wifi, BlueTooth, GSM Worldwide
             3.2-megapixel camera/camcorder; Bluetooth stereo music; microSD memory expansion to 16 GB; access to personal and corporate email
             Up to 5 hours of talk time, up to 312 hours (13 days) of standby time');
-        $product->setCategories($this->getReference('phone'));
+        $product->setCategories(array($this->getReference('phone')));
+        $this->getReference('phone')->getProducts()->add($product);
+        $manager->persist($this->getReference('phone'));
         $manager->persist($product);
 
         $product = new Product();
@@ -201,7 +239,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             It will not work with CDMA carriers like Verizon Wireless, Alltel and Sprint.
             Up to 6 hours of talk time, up to 372 hours (15.5 days) of standby time; released in January, 2011
             Wireless-N Wi-Fi networking (with optional Wi-Fi Mobile Hotspot and tethering capabilities); GPS for navigation and location services');
-        $product->setCategories($this->getReference('phone'));
+        $product->setCategories(array($this->getReference('phone')));
+        $this->getReference('phone')->getProducts()->add($product);
+        $manager->persist($this->getReference('phone'));
         $manager->persist($product);
 
         $product = new Product();
@@ -211,7 +251,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             Network Band : GSM 850, GSM 900, GSM 1800, GSM 1900, 3G 900, 3G 1900, 3G 2100
             Weight 111.5 g, Height 121.55 mm ,Width 63 mm ,Thickness 9.85 mm
             Internal Memory 8GB');
-        $product->setCategories($this->getReference('phone'));
+        $product->setCategories(array($this->getReference('phone')));
+        $this->getReference('phone')->getProducts()->add($product);
+        $manager->persist($this->getReference('phone'));
         $manager->persist($product);
 
         $manager->flush();
