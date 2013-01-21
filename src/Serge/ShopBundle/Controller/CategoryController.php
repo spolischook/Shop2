@@ -4,6 +4,8 @@ namespace Serge\ShopBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 
 use Serge\ShopBundle\Entity\Category;
 use Serge\ShopBundle\Form\CategoryType;
@@ -21,20 +23,16 @@ class CategoryController extends Controller
     public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT p FROM ShopBundle:Product p";
+        $dql = "SELECT c FROM ShopBundle:Category c";
         $query = $em->createQuery($dql);
 
-        $entities = $em->getRepository('ShopBundle:Category')->findAll();
-
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            10
-        );
+        $adapter = new DoctrineORMAdapter($query);
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setCurrentPage($page);
 
         return $this->render('ShopBundle:Category:index.html.twig', array(
-            'pagination' => $pagination,
+            'entities' => $pagerfanta->getCurrentPageResults(),
+            'my_pager' => $pagerfanta,
         ));
     }
 
