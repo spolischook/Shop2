@@ -28,7 +28,8 @@
         "white-october/pagerfanta-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "dev-master",
         "behat/symfony2-extension": "dev-master",
-        "behat/mink-extension": "*"
+        "behat/mink-extension": "*",
+        "behat/mink-selenium2-driver": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

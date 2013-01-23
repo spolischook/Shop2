@@ -1,5 +1,5 @@
 {
-    "hash": "bf21483a3bf104754b33207161a5fcc4",
+    "hash": "3a7715f22f3f6eecd178a98b4b4acb03",
     "packages": [
         {
             "name": "behat/behat",
@@ -267,6 +267,54 @@
                 "browser",
                 "web",
                 "gui"
+            ]
+        },
+        {
+            "name": "behat/mink-selenium2-driver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/Behat/MinkSelenium2Driver.git",
+                "reference": "e604ce91d65d01233b3f41ca58847c30138e6867"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Behat/MinkSelenium2Driver/archive/e604ce91d65d01233b3f41ca58847c30138e6867.zip",
+                "reference": "e604ce91d65d01233b3f41ca58847c30138e6867",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "instaclick/php-webdriver": "@dev",
+                "behat/mink": "1.4.*"
+            },
+            "time": "2012-11-21 18:42:20",
+            "type": "mink-driver",
+            "autoload": {
+                "psr-0": {
+                    "Behat\\Mink\\Driver": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantin Kudryashov",
+                    "email": "ever.zet@gmail.com",
+                    "homepage": "http://everzet.com"
+                }
+            ],
+            "description": "Selenium2 (WebDriver) driver for Mink framework",
+            "homepage": "http://mink.behat.org/",
+            "keywords": [
+                "javascript",
+                "testing",
+                "browser",
+                "ajax",
+                "selenium",
+                "webdriver"
             ]
         },
         {
@@ -789,6 +837,55 @@
                 "http client",
                 "client",
                 "web service"
+            ]
+        },
+        {
+            "name": "instaclick/php-webdriver",
+            "version": "1.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/instaclick/php-webdriver",
+                "reference": "1.0.11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/instaclick/php-webdriver/archive/1.0.11.zip",
+                "reference": "1.0.11",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "2012-12-02 22:08:47",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "WebDriver": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Bishop",
+                    "email": "jubishop@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "role": "Fork Maintainer"
+                }
+            ],
+            "description": "PHP WebDriver for Selenium 2",
+            "homepage": "http://instaclick.com/torontotechjobs/",
+            "keywords": [
+                "browser",
+                "selenium",
+                "webdriver",
+                "webtest"
             ]
         },
         {
@@ -2170,6 +2267,6 @@
         "white-october/pagerfanta-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,
         "behat/symfony2-extension": 20,
-        "behat/mink-browserkit-driver": 20
+        "behat/mink-selenium2-driver": 20
     }
 }
