@@ -7,3 +7,4 @@ vendor
 composer.phar
 .idea
 app/config/parameters.yml
+behat.yml
